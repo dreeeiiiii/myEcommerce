@@ -9,22 +9,22 @@ const initialState= {
     message: '',
     success: false,
 }
-type SignUpProps = {
+type SignInProps = {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     action: (prevState:any, formData: FormData) => Promise<{ message: string} | undefined>
 }
 
-const  SignUp = ({ action }: SignUpProps) => {
+const  SignIn = ({ action }: SignInProps) => {
     const [state, formAction, isPending] = useActionState(action, initialState)
 
     return (
         <Form action={formAction} className="max-w-md mx-auto my-16 bg-white rounded-lg shadow-md text-black px-6 py-6">
-            <h1 className="text-2xl font-bold text-center my-2">JOIN US NOW!</h1>
+            <h1 className="text-2xl font-bold text-center my-2">WELCOME BACK!</h1>
             <p className="text-center text-sm text-blue-600 font-semibold mb-2">
-            🔵 LIMITED TIME OFFER 🔵
+            ✔ Great to see you again! 🚶
             </p>
-            <p className="text-center text-sm text-gray-600 mb-6">
-                Sign up now and get 90% OFF your first purchase! 🕙
+            <p className="text-center text-xs text-gray-600 mb-6">
+            🎉 Your next amazing find is just a click away. Sign in to access your account, manage orders, and shop with ease.
             </p>
             <div className="space-y-6">
                 {/* Email Field */}
@@ -59,8 +59,8 @@ const  SignUp = ({ action }: SignUpProps) => {
                     />
                 </div>
                 <div className = 'text-center'>
-                    <p className ='text-xs text-gray-500 mv-2'>⚡ Only 127 welcome bonus package remaining</p>
-                    <p className ='text-xs text-gray-500 mv-4'>⌛ Offers expires in 19:29</p>
+                    <p className ='text-xs text-gray-500 mv-2'>🎉 Get up to 50% OFF on your favorite items.</p>
+                    <p className ='text-xs text-gray-500 mv-4'>⌛ Shop now before the deals disappear!</p>
                     
                 </div>
 
@@ -70,15 +70,16 @@ const  SignUp = ({ action }: SignUpProps) => {
                     type="submit"
                     disabled={isPending}
                 >
-                    {isPending ? (
+                    {isPending ? (  
                         <>
                             <Loader2 className="h-4 w-4 animate-spin" />
-                            CREATING ACCOUNT...
+                            SIGNING IN...
                         </>
                     ) : (
-                        "CREATE ACCOUNT"
+                        "SIGN IN"
                     )}
                 </button>
+
                 {state?.message && state.message.length > 0 && (
                     <p className='text-center text-sm text-red-600'>
                         {state.message}
@@ -89,4 +90,4 @@ const  SignUp = ({ action }: SignUpProps) => {
     )
 }
 
-export default SignUp
+export default SignIn

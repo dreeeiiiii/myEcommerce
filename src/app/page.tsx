@@ -1,11 +1,12 @@
+import { getCurrentSession } from "@/actions/auth";
 
-
-const Page = () => {
+const HOME = async () => {
+  const {user} = await getCurrentSession()
   return (
-    <div>
-      <h1>Ecommerce HomePage</h1>
+    <div className='text-black'>
+      {JSON.stringify(user)}
     </div>
   );
 };
 
-export default Page;
+export default HOME;
